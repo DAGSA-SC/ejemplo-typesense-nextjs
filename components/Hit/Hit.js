@@ -5,7 +5,7 @@ const Hit = ({hit}) => <div>
   <div className="row image-container">
     <div className="col-md d-flex align-items-end justify-content-center">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={hit.image} alt={hit.name} />
+      <img src={hit.image_128} alt={hit.name} />
     </div>
   </div>
   <div className="row mt-5">

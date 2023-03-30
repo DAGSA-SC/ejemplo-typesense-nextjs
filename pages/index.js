@@ -28,7 +28,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
     // The following parameters are directly passed to Typesense's search API endpoint.
     //  So you can pass any parameters supported by the search endpoint below.
     //  queryBy is required.
-    queryBy: 'name,categories,description',
+    queryBy: 'name,x_studio_categoria,description',
     queryByWeights: '4,2,1',
     numTypos: 1,
     typoTokensThreshold: 1,
@@ -54,7 +54,7 @@ export default function Home({
       </Head>
 
       <main>
-        <InstantSearch indexName="products"
+        <InstantSearch indexName="Comercia"
                        {...props}
                        searchClient={searchClient}
                        searchState={searchState}
@@ -100,7 +100,7 @@ export default function Home({
             <div className="row mt-4">
               <div className="col-md-3 pr-md-5">
                 <h5>Browse by Categories</h5>
-                <HierarchicalMenu
+                {/* <HierarchicalMenu
                   className="mt-3"
                   attributes={[
                     'categories.lvl0',
@@ -111,12 +111,12 @@ export default function Home({
                   showParentLevel={true}
                   rootPath={"Cell Phones"}
                   limit={50}
-                />
+                /> */}
 
                 <h5 className="mt-5">Filter by Brands</h5>
                 <RefinementList
                   className="mt-3"
-                  attribute="brand"
+                  attribute="x_studio_laboratorio"
                   limit={10}
                   showMore={true}
                   showMoreLimit={50}
@@ -128,12 +128,12 @@ export default function Home({
 
                 <div className="mt-2">&nbsp;</div>
 
-                <ToggleRefinement
+                {/* <ToggleRefinement
                   className="mt-5"
                   attribute="free_shipping"
                   label="Free Shipping"
                   value={true}
-                />
+                /> */}
 
                 <div className="mt-1">&nbsp;</div>
 
@@ -143,10 +143,10 @@ export default function Home({
                 <div className="mt-1">&nbsp;</div>
 
                 <h5 className="mt-5">Filter by Rating</h5>
-                <RatingMenu
+                {/* <RatingMenu
                   className="mt-3"
                   attribute="rating"
-                />
+                /> */}
 
                 <div className="mt-1">&nbsp;</div>
 
@@ -187,7 +187,7 @@ export default function Home({
                             {label: 'Price (asc)', value: 'products/sort/price:asc'},
                             {label: 'Price (desc)', value: 'products/sort/price:desc'},
                           ]}
-                          defaultRefinement="products"
+                          defaultRefinement="Comercia"
                         />
                       </div>
                     </div>
@@ -218,7 +218,7 @@ export async function getServerSideProps({res}) {
   res.setHeader("Cache-Control", `s-maxage=${1 * 60 * 60}, stale-while-revalidate=${24 * 60 * 60}`);
 
   const resultsState = await findResultsState(Home, {
-    indexName: "products",
+    indexName: "Comercia",
     searchClient: typesenseInstantsearchAdapter.searchClient
   });
 
